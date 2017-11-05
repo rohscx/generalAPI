@@ -39,13 +39,11 @@ initConfig() {
     git clone https://github.com/rohscx/generalAPI.git
     cd generalAPI
     npm install
-    sleep 20
   else
     echo "Node configuration already initialized........."
     git pull
     cd generalAPI
     npm install
-    sleep 20
   fi
 }
 
@@ -76,10 +74,9 @@ while getopts fhis flag; do
       exit
       ;;
     s)
-      initConfig
       startMongoDB
+      initConfig
       startNodeServer
-
       exit
       ;;
     *)
