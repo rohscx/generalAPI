@@ -51,7 +51,7 @@ RUN chmod 755 /docker-entrypoint.sh
 
 # Make mongo db directory
 RUN mkdir -p /data/db
-#RUN chown -R node_dev:node_dev /data/db
+RUN chmod 0755 /data/db
 
 # Add Meteor user
 RUN adduser --disabled-password --gecos "" node_dev
