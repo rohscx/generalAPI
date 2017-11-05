@@ -41,7 +41,9 @@ initConfig() {
     npm install
   else
     echo "Node configuration already initialized........."
+    git pull
     cd generalAPI
+    npm install
   fi
 }
 
