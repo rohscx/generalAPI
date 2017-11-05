@@ -43,6 +43,10 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14
 RUN apt-get update \
 && apt-get install -y mongodb-org
 
+
+# Make mongo db directory
+RUN mkdir -p /data/db
+
 # Run Entrypoint script
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
