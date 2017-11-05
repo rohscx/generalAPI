@@ -46,6 +46,7 @@ RUN apt-get update \
 
 # Make mongo db directory
 RUN mkdir -p /data/db
+RUN chown -R mongod:mongod /data/db
 
 # Run Entrypoint script
 COPY docker-entrypoint.sh /docker-entrypoint.sh
