@@ -5,9 +5,9 @@ var Schema = mongoose.Schema;
 
 
 var StoreSchema = new Schema({
-  name: {
+  dataString: {
     type: String,
-    required: 'Kindly enter the name of the task'
+    required: 'This is a required string field'
   },
   Created_date: {
     type: Date,
@@ -16,7 +16,7 @@ var StoreSchema = new Schema({
   status: {
     type: [{
       type: String,
-      enum: ['pending', 'ongoing', 'completed']
+      enum: ['pending', 'ongoing', 'completed','ready']
     }],
     default: ['pending']
   }
