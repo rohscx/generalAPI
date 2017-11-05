@@ -9,7 +9,6 @@ var express = require('express'),
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/generalAPI');
 
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -18,6 +17,7 @@ routes(app); //register the route
 
 
 app.listen(port);
+// error checking. responds to routes that do not exisist
 app.use(function(req, res) {
   res.status(404).send({url: req.originalUrl + ' not found'})
 });
