@@ -7,7 +7,7 @@
 #
 # =====================================================================
 
-START_DELAY=20
+START_DELAY=10
 
 NODE_HOME=/home/node/
 NODE_PROJECT_NAME=generalAPI
@@ -39,13 +39,11 @@ initConfig() {
     git clone https://github.com/rohscx/generalAPI.git
     cd generalAPI
     npm install
-    sleep 10
   else
     echo "Node configuration already initialized........."
     git pull
     cd generalAPI
     npm install
-    sleep 10
   fi
 }
 
@@ -54,6 +52,7 @@ startMongoDB() {
 }
 
 startNodeServer() {
+  sleep ${START_DELAY}
   npm run start
 }
 
