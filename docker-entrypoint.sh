@@ -7,7 +7,7 @@
 #
 # =====================================================================
 
-START_DELAY=2
+START_DELAY=10
 
 NODE_HOME=/home/node/
 NODE_PROJECT_NAME=generalAPI
@@ -49,9 +49,11 @@ initConfig() {
 
 startMongoDB() {
   mongod &
+  sleep
 }
 
 startNodeServer() {
+  sleep ${START_DELAY}
   npm run start
 }
 
