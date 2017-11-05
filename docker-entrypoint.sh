@@ -37,14 +37,19 @@ usage() {
 initConfig() {
   if [ ! "$(ls --ignore .keys --ignore .authoritative --ignore .recursive --ignore -A ${NODE_FAKEOUT})"  ]; then
     git clone https://github.com/rohscx/generalAPI.git
+    cd generalAPI
+    npm install
   else
     echo "Node configuration already initialized........."
   fi
 }
 
+startMongoDB() {
+  mongod &
+}
 
-start() {
-  bash
+startNodeServer() {
+  npm run start
 }
 
 # Evaluate arguments for build script.
@@ -57,7 +62,7 @@ fi
 while getopts fhis flag; do
   case ${flag} in
     f)
-      start
+      startNodeServer
       exit
       ;;
     h)
@@ -66,7 +71,9 @@ while getopts fhis flag; do
       ;;
     s)
       initConfig
-      start
+      startMongoDB
+      startNodeServer
+
       exit
       ;;
     *)
