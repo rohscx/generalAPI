@@ -18,7 +18,7 @@ var StoreSchema = new Schema({
       type: String,
       enum: ['pending', 'ongoing', 'completed','ready']
     }],
-    default: ['pending']
+    default: ['ready']
   }
 });
 
