@@ -13,8 +13,6 @@ exports.list_all_stores = function(req, res) {
 };
 
 
-
-
 exports.create_a_store = function(req, res) {
   var new_store = new Store(req.body);
   new_store.save(function(err, store) {
@@ -44,8 +42,6 @@ exports.update_a_store = function(req, res) {
 
 
 exports.delete_a_store = function(req, res) {
-
-
   Store.remove({
     _id: req.params.storeId
   }, function(err, store) {
