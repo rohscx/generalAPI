@@ -13,6 +13,7 @@ mongoose.connect('mongodb://localhost/generalAPI');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+
 var routes = require('./api/routes/generalRoutes'); //importing route
 routes(app); //register the route
 
