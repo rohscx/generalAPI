@@ -39,13 +39,13 @@ initConfig() {
     git clone https://github.com/rohscx/generalAPI.git
     cd generalAPI
     npm install
-    sleep ${START_DELAY}
+    sleep 20
   else
     echo "Node configuration already initialized........."
     git pull
     cd generalAPI
     npm install
-    sleep ${START_DELAY}
+    sleep 20
   fi
 }
 
