@@ -10,3 +10,19 @@ docker logs -f $(sudo docker run -itd --rm -p 3030:3000  -h generalapi  --name g
 
 Generally startup:
 docker run -itd -p 3030:3000  -h generalapi  --name generalAPI  generalapi -s
+
+How to GET:
+10.211.55.6:3030/store
+
+How to POST:
+{IP ADDRESS}:3030/store
+
+Type: POST
+Body: RAW
+
+Body :
+{
+	"dataString":"{Test123}",
+	"status":"ready"
+
+}
