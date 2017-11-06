@@ -8,8 +8,8 @@ var express = require('express'),
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/generalAPI');
-
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.raw({ extended: true }));
+//app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 var routes = require('./api/routes/generalRoutes'); //importing route
