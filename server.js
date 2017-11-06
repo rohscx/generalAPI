@@ -8,7 +8,9 @@ var express = require('express'),
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/generalAPI');
+// used with POST, body type raw JSON
 app.use(bodyParser.raw({ extended: true }));
+// used with POST, body type x-www-form-urlencoded
 //app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
