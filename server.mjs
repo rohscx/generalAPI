@@ -1,21 +1,27 @@
-var express = require('express'),
-  app = express(),
-  port = process.env.PORT || 3000,
-  mongoose = require('mongoose'),
-  Task = require('./api/models/generalModel'), //created model loading here
-  bodyParser = require('body-parser');
+import express from 'express';
+import mongoose from 'mongoose';
+import * as modelSchema from './api/models/generalModel';
+import bodyParser from 'body-parser';
+import {appRoutes} from './api/routes/generalRoutes';
+
+
+const app = express();
+const port = process.env.PORT || 3000;
 
 // mongoose instance connection url connection
+const options = {
+  useMongoClient: true
+};
+mongoose.connect(u
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/generalAPI');
+mongoose.connect('mongodb://generalapi_generalmongo_1/generalAPI',options);
 // used with POST, body type raw JSON
 app.use(bodyParser.raw({ extended: true }));
 // used with POST, body type x-www-form-urlencoded
 //app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var routes = require('./api/routes/generalRoutes'); //importing route
-routes(app); //register the route
+appRoutes(app); //register the route
 
 
 app.listen(port);

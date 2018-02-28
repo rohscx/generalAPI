@@ -1,10 +1,10 @@
 'use strict';
+import mongoose from 'mongoose';
 
 
-var mongoose = require('mongoose'),
-  Store = mongoose.model('Store');
+const Store = mongoose.model('Store');
 
-exports.list_all_stores = function(req, res) {
+export function list_all_stores(req, res) {
   Store.find({}, function(err, store) {
     if (err)
       res.send(err);
@@ -13,7 +13,7 @@ exports.list_all_stores = function(req, res) {
 };
 
 
-exports.create_a_store = function(req, res) {
+export function create_a_store(req, res) {
   var new_store = new Store(req.body);
   new_store.save(function(err, store) {
     if (err)
@@ -23,7 +23,7 @@ exports.create_a_store = function(req, res) {
 };
 
 
-exports.read_a_store = function(req, res) {
+ export function read_a_store(req, res) {
   Store.findById(req.params.storeId, function(err, store) {
     if (err)
       res.send(err);
@@ -32,7 +32,7 @@ exports.read_a_store = function(req, res) {
 };
 
 
-exports.update_a_store = function(req, res) {
+export function update_a_store(req, res) {
   Store.findOneAndUpdate({_id: req.params.storeId}, req.body, {new: true}, function(err, store) {
     if (err)
       res.send(err);
@@ -41,7 +41,7 @@ exports.update_a_store = function(req, res) {
 };
 
 
-exports.delete_a_store = function(req, res) {
+export function delete_a_store(req, res) {
   Store.remove({
     _id: req.params.storeId
   }, function(err, store) {

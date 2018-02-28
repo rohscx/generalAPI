@@ -1,10 +1,8 @@
-
 'use strict';
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+import mongoose from 'mongoose';
 
-
-var StoreSchema = new Schema({
+const Schema = mongoose.Schema;
+const StoreSchema = new Schema({
   dataString: {
     type: String,
     required: 'This is a required string field'
@@ -22,4 +20,4 @@ var StoreSchema = new Schema({
   }
 });
 
-module.exports = mongoose.model('Store', StoreSchema);
+export default mongoose.model('Store', StoreSchema);

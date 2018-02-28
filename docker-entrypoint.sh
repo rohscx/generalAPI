@@ -10,10 +10,10 @@
 START_DELAY=10
 
 NODE_HOME=/home/node/
-NODE_PROJECT_NAME=generalAPI
-NODE_PROJECT_HOME=/home/node/generalAPI
-NODE_PROJECT_APP=/home/node/generalAPI
-NODE_PROJECT_CD="cd ~/generalAPI"
+NODE_PROJECT_NAME=nodeProjects
+NODE_PROJECT_HOME=/home/node/nodeProjects
+NODE_PROJECT_APP=/home/node/nodeProjects
+NODE_PROJECT_CD="cd ~/nodeProjects"
 NODE_PROJECT_GIT_PULL="git pull"
 NODE_PROJECT_START="meteor --settings settings.json debug > logs/stdout.log 2> logs/stderr.log"
 NODE_FAKEOUT=~/tuoekaf
@@ -35,17 +35,26 @@ usage() {
 
 
 initConfig() {
-  if [ ! "$(ls --ignore .keys --ignore .authoritative --ignore .recursive --ignore -A ${NODE_FAKEOUT})"  ]; then
-    git clone https://github.com/rohscx/generalAPI.git
-    cd generalAPI
+  if [ -f "${NODE_PROJECT_NAME}/logs/setupFlagFile" ]; then
+    # do nothing run the app
+    echo "Node.js configuration already initialized....."
+    cd ${NODE_PROJECT_NAME}
+    echo -n --lastRun :: >> logs/setupFlagFile ; date >> logs/setupFlagFile
+    cat logs/setupFlagFile
+    echo "Running Node.js npm install"
     npm install
   else
-    echo "Node configuration already initialized........."
-    git pull
-    cd generalAPI
+    echo "Creating setupFlagFile file in"
+    cd ${NODE_PROJECT_NAME}
+    touch logs/setupFlagFile
+    echo -n --firstRun *::* >> logs/setupFlagFile ; date >> logs/setupFlagFile
+    cat logs/setupFlagFile
+    ls $(pwd)
+    echo "Running Node.js npm install"
     npm install
   fi
 }
+
 
 startMongoDB() {
   mongod &
@@ -74,7 +83,6 @@ while getopts fhis flag; do
       exit
       ;;
     s)
-      startMongoDB
       initConfig
       startNodeServer
       exit
