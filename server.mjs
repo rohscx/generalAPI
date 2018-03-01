@@ -1,6 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import * as modelSchema from './api/models/generalModel';
+import * as modelSchema from './api/models/generalModel'; // ties the schema to
 import bodyParser from 'body-parser';
 import {appRoutes} from './api/routes/generalRoutes';
 
@@ -12,7 +12,6 @@ const port = process.env.PORT || 3000;
 const options = {
   useMongoClient: true
 };
-mongoose.connect(u
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://generalapi_generalmongo_1/generalAPI',options);
 // used with POST, body type raw JSON

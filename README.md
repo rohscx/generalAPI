@@ -20,18 +20,35 @@ docker logs -f $(sudo docker run -itd --rm -p 3030:3000  -h generalapi  --name g
 Generally startup:
 docker run -itd -p 3030:3000  -h generalapi  --link generalMongo:mongo --name generalAPI  generalapi -s
 
-How to GET:
-10.211.55.6:3030/store
-
-How to POST:
-{IP ADDRESS}:3030/store
-
-Type: POST
-Body: RAW
 
 Body :
 {
-	"dataString":"{Test123}",
-	"status":"ready"
+	"data":object,
+	"status": string = 'pending' OR string = 'ready'
 
+}
+
+
+{IP ADDRESS}:3030/store
+	GET
+		Lists all stores
+	POST
+		Create a store
+			Type: POST
+			Body: RAW
+
+				Body :
+				{
+					"data":{"Test123":"okayGo!"},
+					"status":"ready"
+				}
+
+
+{IP ADDRESS}:3030/store:storeId
+	GET
+		Retrieve a single store
+	PUT
+		Update a single store
+	DELETE
+		Delete a single store
 }

@@ -3,8 +3,8 @@ import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 const StoreSchema = new Schema({
-  dataString: {
-    type: String,
+  data: {
+    type: Object,
     required: 'This is a required string field'
   },
   Created_date: {
@@ -14,7 +14,7 @@ const StoreSchema = new Schema({
   status: {
     type: [{
       type: String,
-      enum: ['pending', 'ongoing', 'completed','ready']
+      enum: ['pending','ready']
     }],
     default: ['ready']
   }
