@@ -1,11 +1,11 @@
 {
   "name": "generalAPI",
-  "version": "0.0.1",
+  "version": "18.0.1",
   "description": "A General API",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "nodemon --exec node --experimental-modules server.mjs"
   },
   "repository": {
     "type": "git",

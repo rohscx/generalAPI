@@ -1,0 +1,17 @@
+version: '3'
+services:
+  generalmongo:
+    image: mongo
+    networks:
+      - generalNetwork
+  generalapi:
+    build: .
+    ports:
+     - "3030:3000"
+    depends_on:
+     - generalmongo
+    command: -s
+    networks:
+      - generalNetwork
+networks:
+  generalNetwork:
